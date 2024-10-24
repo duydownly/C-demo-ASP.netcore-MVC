@@ -1,0 +1,22 @@
+﻿CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(255) NULL,
+    Email NVARCHAR(255) NULL,
+    Password NVARCHAR(255) NULL,
+    Role NVARCHAR(100) NULL
+);
+CREATE TABLE Categories (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(255) NULL,
+    Description NVARCHAR(500) NULL
+);
+CREATE TABLE Products (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(255) NULL,
+    Description NVARCHAR(500) NULL,
+    Image NVARCHAR(500) NULL,
+    Price DECIMAL(18,2) NOT NULL,
+    Quantity INT NOT NULL,
+    CategoryId INT,
+    CONSTRAINT FK_Category_Product FOREIGN KEY (CategoryId) REFERENCES Categories(Id)
+);
